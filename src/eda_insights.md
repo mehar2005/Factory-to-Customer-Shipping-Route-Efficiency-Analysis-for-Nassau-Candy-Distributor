@@ -6,7 +6,8 @@
 ## Dataset description:
 RangeIndex: 10194 entries, 0 to 10193
 Data columns (total 18 columns):
-|# |Column|Non-Null Count|Dtype|  
+|# |Column|Non-Null Count|Dtype| 
+|:---:|:---:|:---:|:---:| 
 |0 |Row ID|10194 non-null|int64|  
 |1 |Order ID|10194 non-null|object| 
 |2 |Order Date|10194 non-null|object| 
@@ -26,6 +27,8 @@ Data columns (total 18 columns):
 |16|Gross Profit|10194 non-null|float64|
 |17|Cost|10194 non-null|float64|
 ### dtypes: 
+|Dtype|Features count|
+|:---:|:---:|
 |float64|3|
 |int64|3|
 |object|12|
@@ -33,6 +36,7 @@ memory usage: 1.4+ MB
 
 ## Statistical summary:
 Functions|Row ID|Customer ID|Sales|Units|Gross Profit|Cost|
+|:---:|:---:|:---:|:---:||:---:|:---:|:---:|
 |count |10194.000000  | 10194.000000  |10194.000000  |10194.000000  |10194.000000  |10194.000000 |
 |mean  |  5097.500000 | 134468.961154 |    13.908537 |     3.791838 |     9.166451 |     4.742087|
 |std   |  2942.898656 |  20231.483007 |    11.341020 |     2.228317 |     6.643740 |     5.061647|
@@ -43,6 +47,8 @@ Functions|Row ID|Customer ID|Sales|Units|Gross Profit|Cost|
 |max   | 10194.000000 | 192314.000000 |   260.000000 |    14.000000 |   130.000000 |   130.000000|
 
 ## missing values per column:
+|Feature Name|Null Counts|
+|:---:|:---:|
 |Row ID        | 0|
 |Order ID      | 0|
 |Order Date    | 0|
@@ -65,7 +71,9 @@ dtype: int64
 
 ### Duplicated values: 0
 
-			Order Date
+### Order Date:
+|Properties|Example|
+|:---:|:---:| 
 |Date format | "%d-%m-%Y"|
 |Max date  |2025-12-31 00:00:00|
 |Min date |2024-01-02 00:00:00|
@@ -78,6 +86,7 @@ So, due to this reason, I have not removed any outlier.
 
 ### Orders per month:
 |Order| Date|
+|:---:|:---:| 
 |11   | 1474|
 |12   | 1470|
 |9    | 1399|
@@ -92,16 +101,22 @@ So, due to this reason, I have not removed any outlier.
 |2    |  300|
 
 ### Orders per year:
+|Year| Orders|
+|:---:|:---:| 
 |2024  |  4181|
 |2025  |  6013|
 
-			Ship Date
+### Ship Date:
+|Properties|Example|
+|:---:|:---:| 
 |Date format | "%d-%m-%Y"|
 |Max date | 2030-06-28 00:00:00|
 |Min date | 2026-06-30 00:00:00|
 |Unique dates| 1338|
 
 ### Shipments per month:
+|Month|Shipments|
+|:---:|:---:| 
 |8   |   388|
 |7   |   415|
 |9   |   689|
@@ -116,19 +131,23 @@ So, due to this reason, I have not removed any outlier.
 |5   |  1571|
 
 ### Shipments per year:
+|Year|Shipments|
+|:---:|:---:| 
 |2026  |   711|
 |2027  |  2089|
 |2028  |  2367|
 |2029  |  2899|
 |2030  |  2128|
 
-> Columns containing outliers in the data:
+### Columns containing outliers in the data:
 1. Sales
 2. Units
 3. Gross Profit
 4. Cost
 
 ### Unique values in categorical columns:
+|Features|Unique values counts|
+|:---:|:---:| 
 |Order ID| 8549|
 |Order Date| 717|
 |Ship Date|1338|
@@ -149,6 +168,8 @@ So, due to this reason, I have not removed any outlier.
 4. Cost -> sales(very high) ; gross profit(high) ; units(moderate)
 
 ## Top 10 States by orders:
+|States|Orders|
+|:---:|:---:| 
 |California      |2001|
 |New York        |1128|
 |Texas           | 985|
@@ -161,6 +182,8 @@ So, due to this reason, I have not removed any outlier.
 |North Carolina  | 249|
 
 ## Top 5 order dates by orders:
+|Order Dates|Orders|
+|:---:|:---:| 
 |2025-09-02   | 62|
 |2025-12-01   | 57|
 |2025-12-02   | 57|
@@ -168,6 +191,8 @@ So, due to this reason, I have not removed any outlier.
 |2025-11-24   | 52|
 
 ## Top 5 ship dates by orders:
+|Ship Dates|Orders|
+|:---:|:---:| 
 |2028-06-07  |  38|
 |2030-05-29  |  35|
 |2030-03-19  |  34|
@@ -175,16 +200,22 @@ So, due to this reason, I have not removed any outlier.
 |2030-02-27  |  30|
 
 ## Ship Mode by orders:
+|Ship Mode|Orders|
+|:---:|:---:| 
 |Standard Class  |  6120|
 |Second Class    |  1979|
 |First Class     |  1548|
 |Same Day        |   547|
 
 ## Country/Region by orders:
+|Country|Orders|
+|:---:|:---:| 
 |United States  |  9994|
 |Canada         |  200|
 
 ## Top 5 cities by orders:
+|City|Orders|
+|:---:|:---:| 
 |New York City   | 915|
 |Los Angeles     | 747|
 |Philadelphia    | 537|
@@ -192,6 +223,8 @@ So, due to this reason, I have not removed any outlier.
 |Seattle         | 428|
 
 ## Top 5 postal codes by orders:
+|Postal Code|Orders|
+|:---:|:---:| 
 |10035  |  263|
 |10024  |  230|
 |10009  |  229|
@@ -199,17 +232,23 @@ So, due to this reason, I have not removed any outlier.
 |10011  |  193|
 
 ## Division by orders:
+|Division|Orders|
+|:---:|:---:| 
 |Chocolate  |  9844|
 |Other      |   310|
 |Sugar      |    40|
 
 ## Regions by orders:
+|Region|Orders|
+|:---:|:---:| 
 |Pacific  |   3253|
 |Atlantic |   2986|
 |Interior |   2335|
 |Gulf     |   1620|
 
 ## Top 5 product IDs by orders:
+|Product ID|Orders|
+|:---:|:---:| 
 |CHO-MIL-31000  |  2137|
 |CHO-SCR-58000  |  2064|
 |CHO-TRI-54000  |  2015|
@@ -217,6 +256,8 @@ So, due to this reason, I have not removed any outlier.
 |CHO-NUT-13000  |  1810|
 
 ## Top 5 products by orders:
+|Product name|Orders|
+|:---:|:---:| 
 |Wonka Bar - Milk Chocolate        |   2137|
 |Wonka Bar -Scrumdiddlyumptious    |   2064|
 |Wonka Bar - Triple Dazzle Caramel |   2015|
@@ -224,7 +265,8 @@ So, due to this reason, I have not removed any outlier.
 |Wonka Bar - Nutty Crunch Surprise |   1810|
 
 ## Factory counts:
-Factory Name
+|Factory Name|Orders|
+|:---:|:---:| 
 |Lot's O' Nuts       | 5692|
 |Wicked Choccy's     | 4152|
 |Secret Factory      |  217|
@@ -232,31 +274,111 @@ Factory Name
 |Sugar Shack         |   27|
 |Unknown Factory     |  6|
 
-## Product Counts:
-|Wonka Bar - Milk Chocolate        |   2137|
-|Wonka Bar -Scrumdiddlyumptious    |   2064|
-|Wonka Bar - Triple Dazzle Caramel |   2015|
-|Wonka Bar - Fudge Mallows         |   1818|
-|Wonka Bar - Nutty Crunch Surprise |   1810|
-|Wonka Gum                         |   120|
-|Kazookles                         |    96|
-|Lickable Wallpaper                |    94|
-|Laffy Taffy                       |    10|
-|SweeTARTS                         |    10|
-|Fizzy Lifting Drinks              |     6|
-|Nerds                             |     4|
-|Hair Toffee                       |     4|
-|Everlasting Gobstopper            |      3|
-|Fun Dip                           |      3|
+## Shipping Lead time per Factory to Region/Factory to State:
+||United States to Canada|United States to United States|
+|:---:|:---:|:---:| 
+|Average lead time|1289.890000|1321.461277|
+|Max Lead Time|1642|1642|
+|Min Lead Time|904|904|
 
-## Division Counts:
-|Chocolate  |  9844|
-|Other      |   310|
-|Sugar      |    40|
+## Factory to Region Shipment Counts:
+|Factory to Region             |  Factory Name  | Shipments|
+|:---:|:---:|:---:|
+|United States to Canada       |  Lot's O' Nuts      |   104|
+|                              |  Wicked Choccy's    |    92|
+|                              |  Secret Factory     |     4|
+|United States to United States|  Lot's O' Nuts      |  5588|
+|                              |  Wicked Choccy's    |  4060|
+|                              |  Secret Factory     |   213|
+|                              |  The Other Factory  |   100|
+|                              |  Sugar Shack        |    27|
+|                              |  Unknown Factory    |     6|
 
-##New features engineered:
+## Factory to State Shipment Counts:
+|Factory to State              |  Factory Name    |Shipments| 
+|:---:|:---:|:---:|
+|United States to Alabama      |  Lot's O' Nuts    |    34|
+|                              |  Wicked Choccy's  |    22|
+|                              |  Secret Factory   |     3|
+|                              |  The Other Factory|     2|
+|United States to Alberta      |  Lot's O' Nuts    |    16|
+|                              |                   |    ..|
+|United States to West Virginia|  Wicked Choccy's  |     2|
+|United States to Wisconsin    |  Lot's O' Nuts    |    58|
+|                              |  Wicked Choccy's  |    47|
+|                              |  Secret Factory   |     5|
+|United States to Wyoming      |  Lot's O' Nuts    |     1|
+
+## 10 Most Efficient Routes:
+|Factory to State                             | Shipping Lead Time|
+|:---:| :---:|
+|United States to Wyoming                     |                1|
+|United States to Saskatchewan                |                2|
+|United States to West Virginia               |                4|
+|United States to Newfoundland and Labrador   |                6|
+|United States to Nova Scotia                 |                6|
+|United States to North Dakota                |                7|
+|United States to New Brunswick               |                8|
+|United States to Maine                       |                8|
+|United States to District of Columbia        |               10|
+|United States to Prince Edward Island        |               10|
+
+## Bottom 10 Least Efficient Routes:
+|Factory to State|Shipping Lead Time|
+|:---:|:---:|
+|United States to California     | 2001|
+|United States to New York       | 1128|
+|United States to Texas          |  985|
+|United States to Pennsylvania   |  587|
+|United States to Washington     |  506|
+|United States to Illinois       |  492|
+|United States to Ohio           |  469|
+|United States to Florida        |  383|
+|United States to Michigan       |  255|
+|United States to North Carolina |  249|
+
+## Top 10 States with High Average Lead Time:
+|State|
+|:---:|
+|California      |
+|New York        |
+|Texas           |
+|Washington      |
+|Pennsylvania    |
+|Illinois        |
+|Ohio            |
+|Florida         |
+|North Carolina  |              
+|Tennessee       |    
+
+## Top 10 states by High Shipment Volumne + Poor Performance(High sipment days):
+|California      | 
+|:---:|            
+|New York        |             
+|Texas           |             
+|Washington      |              
+|Pennsylvania    |             
+|Illinois        |              
+|Ohio            |              
+|North Carolina  |              
+|Florida         |              
+|Tennessee       |              
+
+## Avg shipping lead time and total cost by shipping mode:
+|Shipping mode|Avg. Shipping Lead Time|Avg. Cost|
+|:---:|:---:|:---:|
+|First Class     |  1338.275840 |4.721124|
+|Same Day        |  1333.442413 |4.411225|
+|Second Class    |  1323.845376 |4.827539|
+|Standard Class  |  1314.334641 |4.749328|
+
+## New features engineered:
 | | Feature Name|
+|:---:|:---:| 
 |1| Shipping Lead Time|
 |2| Factory Name|
 |3| Factory Location|
 |4| Profit Margin %|
+|5|Factory to Region|
+|6|Factory to State|
+|7|Efficiency Rank|

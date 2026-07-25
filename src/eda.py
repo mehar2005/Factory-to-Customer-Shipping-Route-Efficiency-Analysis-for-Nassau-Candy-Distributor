@@ -110,11 +110,9 @@ try:
 
     df['Profit Margin %'] = (df['Gross Profit'] / df['Cost']) * 100
 
-    print(df['Factory Name'].value_counts())
-    print(df['Product Name'].value_counts())
-    print(df['Division'].value_counts())
-    print(df['Profit Margin %'].value_counts())
-    print(df.info())
+    df['Factory to Region'] = df['Factory Location'] + ' to ' + df['Country/Region']
+    df['Factory to State'] = df['Factory Location'] + ' to ' + df['State/Province']
+    df['Efficiency Rank'] = df['Shipping Lead Time'].rank(method = 'dense', ascending = True)
 
 except ModuleNotFoundError as e:
     print(f"Error: {e}. Please ensure that all required libraries are installed.")
@@ -136,9 +134,9 @@ But, we can generate a comprehensive EDA report using the ydata_profiling librar
 This report will provide insights into the dataset, including missing values, correlations, 
 and distributions of numerical and categorical features.'''
 
-from ydata_profiling import ProfileReport
-try:
-    profile = ProfileReport(df, title="Exploratory Data Analysis Report")
-    profile.to_file("assets/images/eda/ydata-profile/eda_report.html")
-except:
-    print("An error occured while generating the EDA report. Please ensure that the ydata_profiling library is installed and up to date.")
+# from ydata_profiling import ProfileReport
+# try:
+#     profile = ProfileReport(df, title="Exploratory Data Analysis Report")
+#     profile.to_file("assets/images/eda/ydata-profile/eda_report.html")
+# except:
+#     print("An error occured while generating the EDA report. Please ensure that the ydata_profiling library is installed and up to date.")
