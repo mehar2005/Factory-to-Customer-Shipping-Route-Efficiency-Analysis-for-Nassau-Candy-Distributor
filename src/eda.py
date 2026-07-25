@@ -134,9 +134,9 @@ But, we can generate a comprehensive EDA report using the ydata_profiling librar
 This report will provide insights into the dataset, including missing values, correlations, 
 and distributions of numerical and categorical features.'''
 
-# from ydata_profiling import ProfileReport
-# try:
-#     profile = ProfileReport(df, title="Exploratory Data Analysis Report")
-#     profile.to_file("assets/images/eda/ydata-profile/eda_report.html")
-# except:
-#     print("An error occured while generating the EDA report. Please ensure that the ydata_profiling library is installed and up to date.")
+from ydata_profiling import ProfileReport
+try:
+    profile = ProfileReport(df, title="Exploratory Data Analysis Report")
+    profile.to_file("assets/images/eda/ydata-profile/eda_report.html")
+except:
+    print("An error occured while generating the EDA report. Please ensure that the ydata_profiling library is installed and up to date.")

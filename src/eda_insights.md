@@ -77,7 +77,7 @@ dtype: int64
 |Date format | "%d-%m-%Y"|
 |Max date  |2025-12-31 00:00:00|
 |Min date |2024-01-02 00:00:00|
-|Unique dates| = 717|
+|Unique dates| 717|
 
 ### Why outliers are not removed?:
 There is a reason due to which I have not removed any outliers within the dataset 
