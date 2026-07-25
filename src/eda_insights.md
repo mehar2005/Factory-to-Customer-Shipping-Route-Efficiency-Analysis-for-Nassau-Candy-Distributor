@@ -71,6 +71,11 @@ dtype: int64
 |Min date |2024-01-02 00:00:00|
 |Unique dates| = 717|
 
+### Why outliers are not removed?:
+There is a reason due to which I have not removed any outliers within the dataset 
+bacause this dataset consists of values such as sales, profit, cost etc. and these values can differ from product to product, routes etc.
+So, due to this reason, I have not removed any outlier.
+
 ### Orders per month:
 |Order| Date|
 |11   | 1474|
