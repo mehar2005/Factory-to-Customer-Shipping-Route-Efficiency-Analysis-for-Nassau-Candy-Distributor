@@ -31,6 +31,7 @@ try:
     #Checking for duplicate values in the data:
     print(df.duplicated().sum()) #0 duplicated values in the data
 
+    #Converting into datetime columns:
     df['Order Date'] = pd.to_datetime(
         df['Order Date'],
         format='%d-%m-%Y'
@@ -40,6 +41,7 @@ try:
         format='%d-%m-%Y'
     )
 
+    #Getting simple overview for the datetime columns:
     print(df['Order Date'].min()) #2019-01-01 00:00:00
     print(df['Order Date'].max()) #2023-12-31 00:00:00
     print(df['Order Date'].nunique()) #717 unique dates in the data.
@@ -69,7 +71,7 @@ try:
             if product in (
                 "Wonka Bar - Nutty Crunch Surprise",
                 "Wonka Bar - Fudge Mallows",
-                "Wonka Bar -Scrumdiddlyumptious",
+                "	Wonka Bar -Scrumdiddlyumptious",
             ):
                 return "Lot's O' Nuts"
             elif product in (
@@ -79,8 +81,8 @@ try:
                 return "Wicked Choccy's"
         elif division == "Sugar":
             if product in (
-                "SweeTARTS",
                 "Laffy Taffy",
+                "SweeTARTS",
                 "Nerds",
                 "Fun Dip",
             ):
@@ -122,7 +124,9 @@ except:
 #Exporting the cleaned and feature-engineered dataset to a new CSV file:
 try:
     df.to_csv('data/processed/Nassau-Candy-Distributor-Cleaned.csv', index=False)
+    print("="*60)
     print("Cleaned and feature-engineered dataset exported successfully.")
+    print("="*60)
 except Exception as e:
     print(f"Error exporting the dataset: {e}. Please check the file path and permissions.")
 
@@ -134,9 +138,9 @@ But, we can generate a comprehensive EDA report using the ydata_profiling librar
 This report will provide insights into the dataset, including missing values, correlations, 
 and distributions of numerical and categorical features.'''
 
-from ydata_profiling import ProfileReport
-try:
-    profile = ProfileReport(df, title="Exploratory Data Analysis Report")
-    profile.to_file("assets/images/eda/ydata-profile/eda_report.html")
-except:
-    print("An error occured while generating the EDA report. Please ensure that the ydata_profiling library is installed and up to date.")
+# from ydata_profiling import ProfileReport
+# try:
+#     profile = ProfileReport(df, title="Exploratory Data Analysis Report")
+#     profile.to_file("assets/images/eda/ydata-profile/eda_report.html")
+# except:
+#     print("An error occured while generating the EDA report. Please ensure that the ydata_profiling library is installed and up to date.")
