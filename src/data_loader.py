@@ -16,6 +16,8 @@ def load_data(path):
             data = pd.read_csv(path)
         elif extension == 'xlsx':
             data = pd.read_excel(path, engine='openpyxl')
+        elif extension == 'pkl':
+            data = pd.read_pickle(path)
         else:
             print("Error: Unsupported file format. Please provide a CSV or Excel file.")
             return None

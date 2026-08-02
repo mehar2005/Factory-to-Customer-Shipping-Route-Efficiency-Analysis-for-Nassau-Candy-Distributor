@@ -66,6 +66,12 @@ try:
     #Creating a new column for shipping lead time:
     df['Shipping Lead Time'] = ((df['Ship Date'] - df['Order Date']).dt.days).astype(int)
 
+    #Checking for negative lead time:
+    errors = df[df['Shipping Lead Time'] < 0]
+    print('='*60)
+    print(f"Number of invalid date entries found: {len(errors)}")
+    print('='*60)
+
     def associate_factory_name(division, product):
         if division == "Chocolate":
             if product in (
@@ -108,13 +114,27 @@ try:
         axis=1
     )
 
+    # Aggregating by Ship Mode
+    summary_df = df.groupby('Ship Mode').agg(
+        Total_Shipments=('Ship Mode', 'count'),
+        Avg_Lead_Time=('Shipping Lead Time', 'mean')
+    ).reset_index()
+
     df['Factory Location'] = 'United States'
 
     df['Profit Margin %'] = (df['Gross Profit'] / df['Cost']) * 100
 
     df['Factory to Region'] = df['Factory Location'] + ' to ' + df['Country/Region']
     df['Factory to State'] = df['Factory Location'] + ' to ' + df['State/Province']
+
+    #Ranking Routes from Fastest to Slowest:
     df['Efficiency Rank'] = df['Shipping Lead Time'].rank(method = 'dense', ascending = True)
+
+    summary_df2 = df.groupby('Factory to Region').agg(
+        Total_Shipments = ('Ship Mode', 'count'),
+        Avg_Lead_Time = ('Shipping Lead Time', 'mean'),
+        Lead_Time_Variability = ('Shipping Lead Time', 'std')
+    ).reset_index()
 
 except ModuleNotFoundError as e:
     print(f"Error: {e}. Please ensure that all required libraries are installed.")
@@ -123,7 +143,12 @@ except:
 
 #Exporting the cleaned and feature-engineered dataset to a new CSV file:
 try:
-    df.to_csv('data/processed/Nassau-Candy-Distributor-Cleaned.csv', index=False)
+    df.to_pickle('data/processed/Nassau-Candy-Distributor-Cleaned.pkl')
+    summary_df.to_pickle('data/processed/Summary-df.pkl')
+    summary_df2.to_pickle('data/processed/Summary-df2.pkl')
+    df.to_csv('data/processed/Nassau-Candy-Distributor-Cleaned.csv')
+    summary_df.to_csv('data/processed/Summary-df.csv')
+    summary_df2.to_csv('data/processed/Summary-df2.csv')
     print("="*60)
     print("Cleaned and feature-engineered dataset exported successfully.")
     print("="*60)
