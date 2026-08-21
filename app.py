@@ -42,7 +42,6 @@ def get_data() -> pd.DataFrame:
 
 
 def route_summary(data: pd.DataFrame, route_column: str) -> pd.DataFrame:
-    """Calculate route KPIs; 100 is the fastest route in the current filter context."""
     threshold = data["Shipping Lead Time"].quantile(DELAY_QUANTILE)
     summary = data.groupby(route_column, dropna=False).agg(
         Route_Volume=("Order ID", "nunique"),
@@ -78,14 +77,14 @@ def apply_filters(data: pd.DataFrame) -> pd.DataFrame:
     return filtered
 
 
-st.set_page_config(page_title="Nassau Candy Route Efficiency", page_icon="🍬", layout="wide")
+st.set_page_config(page_title="Nassau Candy Route Efficiency", page_icon="🍬", layout="wide", initial_sidebar_state='collapsed')
 st.title("Factory-to-Customer Shipping Route Efficiency")
 title_col, logo_col = st.columns([4, 1])
 with title_col:
-    st.caption("Nassau Candy Distributor | Live logistics decision support")
+    st.subheader("Nassau Candy Distributor | Live logistics decision support")
 with logo_col:
     if Path("logo.png").exists():
-        st.image("logo.png", use_container_width=True)
+        st.image("logo.png", use_container_width=True, width = 'stretch')
 st.caption(f"Dashboard refreshed: {datetime.now():%d %b %Y, %H:%M}")
 
 try:
@@ -101,7 +100,7 @@ if filtered_df.empty:
 state_summary = route_summary(filtered_df, "State/Province")
 route_state_summary = route_summary(filtered_df, "Factory to Customer State")
 delay_threshold = filtered_df["Shipping Lead Time"].quantile(DELAY_QUANTILE)
-kpis = st.columns(5)
+kpis = st.columns(5, border = True)
 kpis[0].metric("Average lead time", f"{filtered_df['Shipping Lead Time'].mean():.1f} days")
 kpis[1].metric("Route volume", f"{filtered_df['Order ID'].nunique():,} orders")
 kpis[2].metric("Delayed shipments", f"{(filtered_df['Shipping Lead Time'] > delay_threshold).sum():,}")
