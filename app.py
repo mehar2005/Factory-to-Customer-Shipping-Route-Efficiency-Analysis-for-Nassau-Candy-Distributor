@@ -72,7 +72,7 @@ def apply_filters(data: pd.DataFrame) -> pd.DataFrame:
             st.info("No shipments match the selected filters.")
             return filtered
         low, high = map(int, (filtered["Shipping Lead Time"].min(), filtered["Shipping Lead Time"].max()))
-        lead_range = st.slider("Lead-time range (days)", low, high, (low, high))
+        lead_range = st.slider("Lead-time range (days)", low - 1, high, (low, high))
         filtered = filtered[filtered["Shipping Lead Time"].between(*lead_range)]
     return filtered
 
